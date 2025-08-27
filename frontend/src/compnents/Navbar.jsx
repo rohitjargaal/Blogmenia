@@ -5,6 +5,9 @@ import { Link, useNavigate } from 'react-router'
 function Navbar() {
 
     const navigate = useNavigate()
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // New state for dropdown
+
 
     function logouthandle() {
         const cookie = localStorage.removeItem("tokenkey")
@@ -12,47 +15,52 @@ function Navbar() {
             navigate("/login")
         }
     }
-    function handleNavigation(e) {
-        const value = e.target.value;
-        if (value) {
-            navigate(value);
-        }
+
+    function handleNavigation(path) {
+        navigate(path);
+    }
+
+    function toggleMenu() {
+        setIsMenuOpen(!isMenuOpen);
+    }
+    function toggleDropdown() {
+        setIsDropdownOpen(!isDropdownOpen);
     }
 
     return (
         <div className="navbar">
             <a href="/">Blog Menia</a>
-            <ul className="nav-list">
+            <ul className={`nav-list ${isMenuOpen ? 'show' : ''}`}>
                 <li>
-                    <a href="/home">Home</a>
+                    <a href="/home" onClick={() => handleNavigation('/home')}>Home</a>
                 </li>
                 <li className="nav-dropdown">
-                    <div className="nav-dropdown-title">
-                        Select an option
+                    <div className={`nav-dropdown-title ${isDropdownOpen ? 'hidetitle' : ''}`} onClick={toggleDropdown}>
+                        select an option
                     </div>
-                    <ul className="nav-dropdown-menu">
+                    <ul className={`nav-dropdown-menu ${isDropdownOpen ? 'show-dropdown' : ''}`}>
                         <li>
-                            <Link to="/create">Create new blog</Link>
+                            <a href="/create" onClick={() => navigate('/create')}>Create new blog</a>
                         </li>
                         <li>
-                            <Link to="/myvlog">My Blog</Link>
+                            <a href="/myvlog" onClick={() => navigate('/myvlog')}>My Blog</a>
                         </li>
                         <li>
-                            <Link to="/dashboard">Dashboard</Link>
+                            <a href="/dashboard" onClick={() => navigate('/dashboard')}>Dashboard</a>
                         </li>
                     </ul>
                 </li>
-
                 <li>
-                    <a href="/about">About</a>
+                    <a href="/about" onClick={() => handleNavigation('/about')}>About</a>
                 </li>
                 <li>
-                    <a href="/contact">Contact</a>
+                    <a href="/contact" onClick={() => handleNavigation('/contact')}>Contact</a>
                 </li>
                 <li>
                     <button className='btnclass' style={{ margin: '0px' }} onClick={logouthandle}>logout</button>
                 </li>
             </ul>
+            <i className="fa-solid fa-bars" onClick={toggleMenu}></i>
         </div>
     )
 }

@@ -8,6 +8,7 @@
   .navbar {
     padding: 0px 30px;
     display: flex;
+    position: relative;
   }
 
   .navbar a {
@@ -19,26 +20,21 @@
 
   .navbar .nav-list {
     padding: 1rem 0px;
-    display: flex;
+    display: none;
     flex-direction: column;
-    justify-content: center;
     list-style: none;
+    width: 100%;
+    min-height: calc(100vh - 5rem);
+    background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 100%;
-    transform: translateX(100%);
-    width: 100%;
-    gap: 40px;
-    min-height: 50vh;
-    border-bottom: 1px solid #e3e3e3;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: 1.4s;
-  }
-
-  .navbar .activeclass {
-    transform: translateX(0);
+    z-index: 9999;
     left: 0px;
   }
 
+ .navbar .nav-list li{
+  height: auto;
+ }
   .navbar .nav-list li a {
     text-decoration: none;
     color: #fff;
@@ -46,9 +42,55 @@
     font-size: 1rem;
   }
 
+  .navbar .nav-list.show {
+    display: flex;
+  }
+
   .navbar .fa-solid.fa-bars {
     display: block;
+    cursor: pointer;
   }
+
+  .navbar .nav-dropdown{
+    height: auto;
+    text-align: center;
+  }
+
+  .nav-dropdown .nav-dropdown-menu {
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+    position: static; 
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    border: none;
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-dropdown-title{
+    color: #fff;
+  }
+
+  .nav-dropdown-menu.show-dropdown {
+    display: flex;
+  }
+  .nav-dropdown-title.hidetitle {
+    display: none;
+  }
+  
+  .nav-dropdown.hide-title {
+    padding: 0;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-menu li a:hover {
+    background-color: transparent;
+    color: #3a86ff;
+}
 
   /* footer styling */
 
@@ -118,7 +160,8 @@
     grid-template-rows: repeat(auto, 1fr) !important;
     gap: 20px;
   }
-  .card-group .card-links .card .card-image{
+
+  .card-group .card-links .card .card-image {
     height: 30rem !important;
   }
 
@@ -231,22 +274,23 @@
 
   /* home page styling started */
 
-.hero-section {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 5rem);
-  justify-content: end;
-  align-items: center;
-  gap: 0px;
-}
-.hero-section h1{
-  text-align: center;
-}
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 5rem);
+    justify-content: end;
+    align-items: center;
+    gap: 0px;
+  }
 
-.blog-card-section h1{
-  font-size: 24px;
-  font-weight: 700;
-}
+  .hero-section h1 {
+    text-align: center;
+  }
+
+  .blog-card-section h1 {
+    font-size: 24px;
+    font-weight: 700;
+  }
 
 
 

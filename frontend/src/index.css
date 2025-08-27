@@ -59,7 +59,7 @@
   font-size: 1.5rem;
 }
 
-.navbar ul {
+.navbar .nav-list {
   display: flex;
   list-style: none;
   gap: 40px;
@@ -67,7 +67,7 @@
   align-items: center;
 }
 
-.navbar ul li a {
+.navbar  .nav-list li a {
   text-decoration: none;
   color: #000;
   font-weight: 500;
@@ -80,42 +80,41 @@
 
 .nav-dropdown-title {
     cursor: pointer;
-    font-weight: 500;
-    font-size: 1rem;
-    color: #000;
 }
 
-.nav-dropdown-menu {
-    display: none; /* Initially hidden */
+.nav-dropdown .nav-dropdown-menu {
+    display: none;
     position: absolute;
-    top: 100%; /* Position below the parent item */
+    top: 100%;
     left: 0;
     list-style: none;
     padding: 10px 0;
     background-color: #fff;
     border: 1px solid #e3e3e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 180px; /* You can adjust this width */
+    min-width: 180px;
     z-index: 10;
 }
 
 .nav-dropdown:hover .nav-dropdown-menu {
-    display: block; /* Show on hover */
+    display: block;
 }
 
 .nav-dropdown-menu li a {
     display: block;
-    padding: 8px 15px;
-    white-space: nowrap;
+    padding: 15px;
     text-decoration: none;
     color: #000;
-    font-weight: normal;
 }
 
 .nav-dropdown-menu li a:hover {
     background-color: #f0f0f0;
     color: #3a86ff;
 }
+
+  .navbar .fa-solid.fa-bars {
+    display: none;
+  }
 
 
 /* footer page styling */
