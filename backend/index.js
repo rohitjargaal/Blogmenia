@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(cors({
     credentials: true,
-    origin: ["https://blogmenia.onrender.com","http://localhost:5173"]
+    origin: ["https://blogmenia-1.onrender.com"]
 }));
 
 app.use("/users", userRoutes)
