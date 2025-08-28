@@ -40,7 +40,7 @@
     display: flex;
     transform: translateX(0px);
     left: 0px;
-    transition: all 1s ease-in;
+    transition: all 1s ease;
   }
 
   .navbar .nav-list li {
