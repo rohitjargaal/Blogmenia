@@ -78,7 +78,7 @@
     position: relative;
 }
 
-.nav-dropdown-title {
+.nav-dropdown .title {
     cursor: pointer;
 }
 
@@ -88,7 +88,6 @@
     top: 100%;
     left: 0;
     list-style: none;
-    padding: 10px 0;
     background-color: #fff;
     border: 1px solid #e3e3e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

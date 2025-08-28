@@ -6,7 +6,6 @@ function Navbar() {
 
     const navigate = useNavigate()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // New state for dropdown
 
 
     function logouthandle() {
@@ -23,9 +22,7 @@ function Navbar() {
     function toggleMenu() {
         setIsMenuOpen(!isMenuOpen);
     }
-    function toggleDropdown() {
-        setIsDropdownOpen(!isDropdownOpen);
-    }
+
 
     return (
         <div className="navbar">
@@ -35,10 +32,8 @@ function Navbar() {
                     <a href="/home" onClick={() => handleNavigation('/home')}>Home</a>
                 </li>
                 <li className="nav-dropdown">
-                    <div className={`nav-dropdown-title ${isDropdownOpen ? 'hidetitle' : ''}`} onClick={toggleDropdown}>
-                        select an option
-                    </div>
-                    <ul className={`nav-dropdown-menu ${isDropdownOpen ? 'show-dropdown' : ''}`}>
+                    <div className="title">select an option</div>
+                    <ul className="nav-dropdown-menu">
                         <li>
                             <a href="/create" onClick={() => navigate('/create')}>Create new blog</a>
                         </li>
@@ -60,7 +55,8 @@ function Navbar() {
                     <button className='btnclass' style={{ margin: '0px' }} onClick={logouthandle}>logout</button>
                 </li>
             </ul>
-            <i className="fa-solid fa-bars" onClick={toggleMenu}></i>
+            {!isMenuOpen ? <i className="fa-solid fa-bars" onClick={toggleMenu}></i>
+            :<i class="fa-solid fa-xmark" onClick={()=>setIsMenuOpen(false)}></i>}
         </div>
     )
 }
