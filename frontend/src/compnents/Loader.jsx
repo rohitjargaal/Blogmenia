@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Loader(value) {
+function Loader({value}) {
   return (
     <div className='loaderpage'>
         <div className="loader">
