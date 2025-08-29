@@ -31,7 +31,7 @@ function Login() {
   }
   return (
     <>
-      {isLoading ? <Loader /> :
+      {isLoading ? <Loader value="Please wait ..." /> :
         (
           <div className="loginpage">
             <img src="/media/images/login.png" alt="" />
