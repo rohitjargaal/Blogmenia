@@ -10,6 +10,7 @@ function Signup() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [image, setimage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const formdata = new FormData();
   formdata.append("username", username)
@@ -20,6 +21,7 @@ function Signup() {
 
   function Signuphandle(e) {
     e.preventDefault();
+    setIsLoading(true)
     axios.post(`${Backendapi}/users/register`, formdata, { withCredentials: true }, { headers: { "Content-Type": "multipart/form-data" } })
       .then((res) => {
         console.log(res)
@@ -38,32 +40,39 @@ function Signup() {
 
 
   return (
-    <div className="signuppage">
-      <img src="/media/images/login.png" alt="" />
-      <form onSubmit={Signuphandle}>
-        <h1 style={{ textAlign: "center" }}>Create a Account On Blogmenia</h1>
-        <div className="input-container">
-          <label>Username</label>
-          <input type="text" onChange={(e) => { setUsername(e.target.value) }} />
-        </div>
-        <div className="input-container">
-          <label> Email address</label>
-          <input type="email" onChange={(e) => { setEmail(e.target.value) }} />
-        </div>
-        <div className="input-container">
-          <label> Password </label>
-          <input type="password" onChange={(e) => { setPassword(e.target.value) }} />
-        </div>
-        <div className="input-container">
-          <label> User Image </label>
-          <input type="file" onChange={(e) => { setimage(e.target.files[0]) }} />
-        </div>
-        <a href="/login" className="btn-link" style={{ textDecoration: "none" }}>Already a user</a>
-        <div className="buttonclass">
-          <button className="btnclass">Signup</button>
-        </div>
-      </form>
-    </div>
+    <>
+      {isLoading ? <Loader /> :
+        (
+          <div className="signuppage">
+            <img src="/media/images/login.png" alt="" />
+            <form onSubmit={Signuphandle}>
+              <h1 style={{ textAlign: "center" }}>Create a Account On Blogmenia</h1>
+              <div className="input-container">
+                <label>Username</label>
+                <input type="text" onChange={(e) => { setUsername(e.target.value) }} />
+              </div>
+              <div className="input-container">
+                <label> Email address</label>
+                <input type="email" onChange={(e) => { setEmail(e.target.value) }} />
+              </div>
+              <div className="input-container">
+                <label> Password </label>
+                <input type="password" onChange={(e) => { setPassword(e.target.value) }} />
+              </div>
+              <div className="input-container">
+                <label> User Image </label>
+                <input type="file" onChange={(e) => { setimage(e.target.files[0]) }} />
+              </div>
+              <a href="/login" className="btn-link" style={{ textDecoration: "none" }}>Already a user</a>
+              <div className="buttonclass">
+                <button className="btnclass">Signup</button>
+              </div>
+            </form>
+          </div>
+        )
+      }
+    </>
+
   );
 }
 
