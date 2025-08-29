@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import { Backendapi } from "./Api";
 import { useNavigate } from "react-router";
-import Loader from "./compnents/Loader";
+import Loader from "./compnents/Loader.jsx";
 
 
 function Login() {
