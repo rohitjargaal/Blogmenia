@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { toast } from 'react-toastify';
 import { Backendapi } from "./Api";
+import Loader from "./compnents/Loader";
 
 function Signup() {
   let navigate = useNavigate();

@@ -3,12 +3,15 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import { Backendapi } from "./Api";
 import { useNavigate } from "react-router";
+import Loader from "./compnents/Loader";
 
 
 function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [issumbit, setisSubmit] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+  
 
   const navigate = useNavigate()
 
@@ -28,7 +31,10 @@ function Login() {
       });
   }
   return (
-    <div className="loginpage">
+    <>
+        {isLoading ? <Loader /> :
+      (
+            <div className="loginpage">
       <img src="/media/images/login.png" alt="" />
       <form onSubmit={Loginhandle}>
         <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>Login In Blogmenia</h1>
@@ -55,6 +61,10 @@ function Login() {
         </div>
       </form>
     </div>
+      )
+    }
+    </>
+
   );
 }
 
